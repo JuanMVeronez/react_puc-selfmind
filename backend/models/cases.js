@@ -4,19 +4,19 @@ const sequelize = require('../database');
 class Cases extends Model{}
 
 Cases.init({
-    nome: {
+    name: {
         type: DataTypes.STRING
     },
-    idade: {
+    age: {
         type: DataTypes.INTEGER
     },
     email: {
         type: DataTypes.STRING
     },
-    telefone: {
+    phone: {
         type: DataTypes.STRING
     },
-    declaration: {
+    text: {
         type: DataTypes.STRING
     }
 }, {

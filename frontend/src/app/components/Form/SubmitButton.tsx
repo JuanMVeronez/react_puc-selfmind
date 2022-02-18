@@ -1,11 +1,14 @@
-import { Button, Icon } from "@chakra-ui/react";
+import { Button, Icon, Spinner, Text } from "@chakra-ui/react";
 import { GiLotus } from "react-icons/gi";
+import { useCases } from "../../hooks/casesContext";
 
 type SubmitButtonProps = {
     disabled?: boolean
 }
 
 export function SubmitButton({disabled=false}: SubmitButtonProps) {
+    const { creationLoading } = useCases()
+
     return (
         <Button type="submit" disabled={disabled}
             _hover={{bg: "pink.500"}}  
@@ -14,8 +17,13 @@ export function SubmitButton({disabled=false}: SubmitButtonProps) {
             h="10" 
             fontWeight={"bold"} 
         >
-            Finalizar Cadastro <Icon as={GiLotus} ml="1" fontSize={24}></Icon> 
+            {creationLoading
+                ? <Spinner /> 
+                : <>
+                    <Text as="span">Finalizar Cadastro</Text>  
+                    <Icon as={GiLotus} ml="1" fontSize={24}></Icon>
+                </>
+            } 
         </Button>
-
     );
 }

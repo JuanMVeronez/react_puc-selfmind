@@ -18,20 +18,24 @@ export const formBaseValue: CaseFormFormat = {
         value: '', isValid: false, error: undefined
     }, 
     age: {
-        value: '', isValid: false, error: undefined
+        value: '', isValid: true, error: undefined
     }, 
     phone: {
-        value: '', isValid: false, error: undefined
+        value: '', isValid: true, error: undefined
     },
 }
 
 export function FormHandler(base: CaseFormFormat, action: CaseFormAction): CaseFormFormat {
+    
+    if (action.type === "reset") {
+        return formBaseValue;
+    }
+    if (!action.fieldId || !action.value) return base;
+
     if (action.type === "change") {
         return {...base, [action.fieldId]: {...base[action.fieldId], value: action.value}}
     }
     if (action.type === "blur") {
-        console.log(action.fieldId)
-        
         let res: ValidationResponse | undefined;
         switch (action.fieldId) {
             case "name":
@@ -39,7 +43,6 @@ export function FormHandler(base: CaseFormFormat, action: CaseFormAction): CaseF
                 break
             case "text":
                 res = mixValidation(requiredValidation(action.value));
-                console.log(res)
                 break;
             case "email":
                 res = mixValidation(requiredValidation(action.value), emailValidation(action.value));

@@ -17,7 +17,7 @@ export function CaseCard({name, age, text}: CaseCardProps) {
                 </Flex>
                 {!!age && <Text fontSize="lg">{age} anos</Text>}
             </Flex>
-            <Text fontSize="xl" maxW="300">{text}</Text>
+            <Text fontSize="xl">{text}</Text>
         </Flex>
     );
 }
