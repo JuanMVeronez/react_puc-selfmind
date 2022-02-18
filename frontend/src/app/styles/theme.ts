@@ -13,6 +13,10 @@ const customTheme: DeepPartial<Theme> = {
       "200": "#B3B5C6",
       "100": "#D1D2DC",
       "50": "#EEEEF2",
+    },
+    blue: {
+      "50": "#CEE6D9",
+      "200": "#72b6b7"
     }
   },
   fonts: {
@@ -22,7 +26,7 @@ const customTheme: DeepPartial<Theme> = {
   styles: {    
     global: {
       body: {
-        bg: 'gray.900',
+        bg: 'blue.50',
         color: 'gray.50'
       }
     }
