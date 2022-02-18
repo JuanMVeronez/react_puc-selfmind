@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database');
 
-class Client extends Model{}
+class Cases extends Model{}
 
-Client.init({
+Cases.init({
     nome: {
         type: DataTypes.STRING
     },
@@ -16,12 +16,12 @@ Client.init({
     telefone: {
         type: DataTypes.STRING
     },
-    foco: {
+    declaration: {
         type: DataTypes.STRING
     }
 }, {
     sequelize,
-    modelName: 'client'
+    modelName: 'Cases'
 })
 
-module.exports = Client;
+module.exports = Cases;

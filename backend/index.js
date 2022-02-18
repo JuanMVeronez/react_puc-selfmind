@@ -1,7 +1,7 @@
 const express = require('express');
 const sequelize = require('./database');
 const cors = require('cors');
-const Client = require('./models/Client');
+const Cases = require('./models/cases');
 
 sequelize.sync({force: true}).then(() => console.log('db criado'));
 const app = express();
@@ -11,34 +11,34 @@ app.use(cors())
 
 app.use(express.json());
 
-app.get('/client', async (req, res) => {
-    const alunos = await Client.findAll();
-    res.send(alunos);
+app.get('/cases', async (req, res) => {
+    const cases = await Cases.findAll();
+    res.send(cases);
 });
 
-app.get('/client/:id', async (req, res) => {
+app.get('/cases/:id', async (req, res) => {
     const { id } = req.params;
-    const aluno = await Client.findOne({ where: { id } });
-    res.send(aluno);
+    const clientCase = await Cases.findOne({ where: { id } });
+    res.send(clientCase);
 });
 
-app.post('/client', async (req, res) => {
-    await Client.create(req.body);
-    res.send('Cliente criado com sucesso');
+app.post('/cases', async (req, res) => {
+    await Cases.create(req.body);
+    res.send('depoimento criado com sucesso');
 });
 
-app.put('/client/:id', async (req, res) => {
+app.put('/cases/:id', async (req, res) => {
     const { id } = req.params;
-    const aluno = await Client.findOne({ where: { id } })
-    aluno.name = req.body.name;
-    await aluno.save();
-    res.send('Cliente atualizado com sucesso');
+    const clientCase = await Cases.findOne({ where: { id } })
+    clientCase.name = req.body.name;
+    await clientCase.save();
+    res.send('depoimento atualizado com sucesso');
 });
 
-app.delete('/client/:id', async (req, res) => {
+app.delete('/cases/:id', async (req, res) => {
     const { id } = req.params;
-    await Client.destroy({ where: { id } });
-    res.send('Cliente deletado com sucesso');
+    await Cases.destroy({ where: { id } });
+    res.send('depoimento deletado com sucesso');
 });
 
 app.listen(3001, () => {
