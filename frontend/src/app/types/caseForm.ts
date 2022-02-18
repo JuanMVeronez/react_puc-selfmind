@@ -1,19 +1,10 @@
 export type CaseFormFormat = {
-    email: {
-        value: string, isValid: boolean, error?: string
-    }, 
-    name: {
-        value: string, isValid: boolean, error?: string
-    }, 
-    text: {
-        value: string, isValid: boolean, error?: string
-    }, 
-    age: {
-        value: string, isValid: boolean, error?: string
-    }, 
-    phone: {
-        value: string, isValid: boolean, error?: string
-    }, 
+    isValid: boolean,
+    email: FormField, 
+    name: FormField, 
+    text: FormField, 
+    age: FormField, 
+    phone: FormField, 
 }
 
 export type CaseFormAction = {
@@ -25,4 +16,8 @@ export type CaseFormAction = {
 export type ValidationResponse = {
     isValid: boolean;
     error: string | undefined;
+}
+
+export type FormField = {
+    value: string, isValid: boolean, error?: string
 }

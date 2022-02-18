@@ -1,18 +1,14 @@
-import { Button, Icon, Stack, Text } from "@chakra-ui/react";
+import { Stack, Text } from "@chakra-ui/react";
 import { ChangeEvent } from "react";
-import { GiLotus } from "react-icons/gi";
 import { useCases } from "../../contexts/casesContext";
 import { Input } from "./Input";
+import { SubmitButton } from "./SubmitButton";
 
 export function Form() {
     const {newCase, setNewCase} = useCases()
 
     function formHandler(e: ChangeEvent<HTMLInputElement>) {
-        setNewCase({
-            type: e.type, 
-            fieldId: e.target.id as ("email" | "name" | "text" | "age" | "phone"), 
-            value: e.target.value
-        })
+        setNewCase({type: e.type, fieldId: e.target.id as any, value: e.target.value})
     }
 
     return (
@@ -34,13 +30,7 @@ export function Form() {
                 <Input value={newCase.age.value} onBlur={formHandler} onChange={formHandler} error={newCase.age.error} label="Idade" name="age" placeholder="00"/>
                 
             </Stack>
-            <Button type="submit" disabled
-                _hover={{bg: "pink.500"}}  
-                bg="pink.400"  
-                w="100%" 
-                h="10" 
-                fontWeight={"bold"} 
-            >Finalizar Cadastro <Icon as={GiLotus} ml="1" fontSize={24}></Icon> </Button>
+            <SubmitButton disabled={!newCase.isValid}/>
         </Stack>
     );
 }
