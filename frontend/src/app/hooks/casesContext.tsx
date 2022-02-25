@@ -4,6 +4,7 @@ import { formBaseValue, FormHandler } from "../services/formHandler";
 import { UserCase } from "../types/case";
 import { CaseFormAction, CaseFormFormat } from "../types/caseForm";
 import { formatFormData } from "../utils/formatFormData";
+import { User } from "../types/user";
 
 type CasesProviderProps = {
     children: ReactNode;
@@ -11,6 +12,7 @@ type CasesProviderProps = {
 
 type CasesContextData = {
     cases: UserCase[],
+    users: User[],
     newCase: CaseFormFormat,
     setNewCase: React.Dispatch<CaseFormAction>,
     createUserCase: () => Promise<void>,
@@ -21,9 +23,12 @@ const CasesContext = createContext<CasesContextData>({} as CasesContextData);
 
 export function CasesProvider({children}: CasesProviderProps) {
     const [cases, setCases] = useState<UserCase[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
     const [newCase, setNewCase] = useReducer(FormHandler, formBaseValue);
 
-    const {response} = useGet<UserCase[]>('cases');
+    const {response: caseResponse} = useGet<UserCase[]>('cases');
+    const {response: userResponse} = useGet<User[]>('users')
+    
     const {apiPost, loading: creationLoading} = usePost<UserCase>('cases')
 
     const createUserCase = async () => {
@@ -34,14 +39,14 @@ export function CasesProvider({children}: CasesProviderProps) {
     }
     
     useEffect(() => {
-        if (!!response) {
-            setCases(response.data);    
-        } 
-    }, [response, newCase])
+        if (!!caseResponse) setCases(caseResponse.data);
+        if (!!userResponse) setUsers(userResponse.data)
+    }, [caseResponse, userResponse, newCase])
 
     return (
         <CasesContext.Provider value={{
             cases,
+            users,
             newCase,
             setNewCase,
             createUserCase,
