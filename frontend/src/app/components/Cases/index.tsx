@@ -1,4 +1,5 @@
 import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
+import { t } from "i18next";
 
 import { useCases } from "../../hooks/casesContext";
 import { TitleBelt } from "../TitleBelt";
@@ -8,7 +9,7 @@ export function Cases() {
     const { cases } = useCases()
     if (!!cases.length) return (
         <>
-            <TitleBelt title="Veja a história de algumas pessoas que decidiram estar conosco"/>
+            <TitleBelt title={t("home.cases.title")}/>
             <Flex align="center" justify="center"
                 w="100%"
                 bg="gray.100"

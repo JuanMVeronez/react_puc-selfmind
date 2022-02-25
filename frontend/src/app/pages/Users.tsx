@@ -1,6 +1,14 @@
+import { t } from "i18next";
 import { DataTable } from "../components/DataTable";
 import { TitleBelt } from "../components/TitleBelt";
 import {User} from "../types/user"
+
+const columns = [
+    {value: 'name', title: t("users.table.name")}, 
+    {value: 'age', title: t("users.table.age")}, 
+    {value: 'phone', title: t("users.table.phone")}, 
+    {value: 'email', title: t("users.table.email")}
+]
 
 export default function Users() {
     const users: User[] = [
@@ -13,10 +21,10 @@ export default function Users() {
 
     return (
         <>
-            <TitleBelt title="Lista de usuários que mandaram mensagens"
+            <TitleBelt title={t("users.title")}
                 mt="8"
             />
-            <DataTable data={users} columns={['name', 'age', 'phone', 'email']} />
+            <DataTable data={users} columns={columns} />
         </>
     );
 }

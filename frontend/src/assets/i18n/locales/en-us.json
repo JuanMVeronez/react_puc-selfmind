@@ -1,0 +1,56 @@
+{
+    "translation": {
+        "shared": {
+            "header": {
+                "title": "",
+                "usersLink": "Users"
+            },
+            "units": {
+                "age": "years old"
+            }
+        },
+        "home": {
+            "presentation": "Thank you for trusting us all this time, we are very happy to help you in your discovery process. Could you leave a statement about what you think of your time with us? We want better every day more to help more and more people!",
+            "cases": {
+                "title": "See the story of some people who decide to be with us"
+            },
+            "form": {
+                "title": "How has it been learning with us?",
+                "label": {
+                    "name": "Name",
+                    "text": "Write about your experience with us",
+                    "email": "E-mail",
+                    "phone": "Phone",
+                    "age": "Age" 
+                },
+                "placeholder": {
+                    "name": "Your full name",
+                    "text": "Write anything you want here ^^",
+                    "email": "email@domain.com",
+                    "phone": "12345678901",
+                    "age": "00" 
+                },
+                "errors": {
+                    "required": "Required field",
+                    "emailType": "Need to be a email",
+                    "numberType": "Need to be a number",
+                    "maxLen": "Max character length:",
+                    "minLen": "Min character length:",
+                    "equalLen": "Necessary character length:",
+                    "maxValue": "Value need to be lower than:",
+                    "minValue": "Value need to be bigger than:"
+                },
+                "submitButton": "Send experience"
+            }
+        },
+        "users": {
+            "title": "Users list who sent messages",    
+            "table": {
+                "name": "Name",
+                "email": "E-mail",
+                "phone": "Phone",
+                "age": "Age" 
+            }
+        }
+    }
+}

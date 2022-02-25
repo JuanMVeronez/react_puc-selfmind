@@ -1,4 +1,5 @@
 import { Avatar, Flex, Text } from "@chakra-ui/react";
+import { t } from "i18next";
 
 export type CaseCardProps = {
     name: string;
@@ -15,7 +16,7 @@ export function CaseCard({name, age, text}: CaseCardProps) {
                     <Text fontSize="2xl" fontWeight="bold">{name}</Text>
 
                 </Flex>
-                {!!age && <Text fontSize="lg">{age} anos</Text>}
+                {!!age && <Text fontSize="lg">{`${age} ${t('shared.units.age')}`}</Text>}
             </Flex>
             <Text fontSize="xl">{text}</Text>
         </Flex>

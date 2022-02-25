@@ -1,7 +1,10 @@
 import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
 
 type TableProps = {
-    columns: string[];
+    columns: {
+        value: string;
+        title: string;
+    }[]
     data: any[];
 }
 
@@ -10,17 +13,17 @@ export function DataTable({ columns, data }: TableProps) {
         <Table bg="blue.200">
             <Thead>
                 <Tr py="2" >
-                    {columns.map(name => (
+                    {columns.map(({title}) => (
                         <Th border="0"
                             color="pink.600"
-                        >{name}</Th>
+                        >{title}</Th>
                     ))}
                 </Tr>
             </Thead>
             <Tbody>
                 {data.map(row => (
                     <Tr>
-                        {columns.map(name => (<Th color="white" >{row[name]}</Th>))}
+                        {columns.map(({value}) => (<Th color="white" >{row[value]}</Th>))}
                     </Tr>
                 ))}
             </Tbody>

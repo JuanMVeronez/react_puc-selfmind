@@ -1,0 +1,56 @@
+{
+    "translation": {
+        "shared": {
+            "header": {
+                "title": "",
+                "usersLink": "Usuários"
+            },
+            "units": {
+                "age": "anos"
+            }
+        },
+        "home": {
+            "presentation": "Obrigado por confiar em nós durante todo esse tempo, estamos muito felizes em ajudá-lo em seu processo de descobrimento. Poderia deixar um depoimento sobre o que tem achado do seu tempo conosco? Queremos melhor cada dia mais para ajudar cada vez mais pessoas!",
+            "cases": {
+                "title": "Veja a história de algumas pessoas que decidiram estar conosco"
+            },
+            "form": {
+                "title": "Como tem sido aprender com a gente?",
+                "label": {
+                    "name": "Nome",
+                    "text": "Fale sua experiëncia conosco",
+                    "email": "E-mail",
+                    "phone": "Telefone",
+                    "age": "Idade" 
+                },
+                "placeholder": {
+                    "name": "Seu nome completo",
+                    "text": "Escreva o que quiser aqui ^^",
+                    "email": "email@dominio.com",
+                    "phone": "12345678901",
+                    "age": "00" 
+                },
+                "errors": {
+                    "required": "Campo necessário",
+                    "emailType": "Precisa ser um e-mail",
+                    "numberType": "Precisa ser um número",
+                    "maxLen": "Tamanho máximo de caractéres:",
+                    "minLen": "Tamanho mínimo de caractéres:",
+                    "equalLen": "Tamanho necesário de caractéres:",
+                    "maxValue": "O valor deve ser menor que:",
+                    "minValue": "O valor deve ser maior que:"
+                },
+                "submitButton": "Enviar experiência"
+            }
+        },
+        "users": {
+            "title": "Lista de usuários que mandaram mensagens",
+            "table": {
+                "name": "Nome",
+                "email": "E-mail",
+                "phone": "Telefone",
+                "age": "Idade" 
+            }
+        }
+    }
+}

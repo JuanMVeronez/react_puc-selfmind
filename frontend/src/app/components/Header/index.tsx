@@ -1,4 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { t } from "i18next";
 import { Link } from "react-router-dom";
 
 import { Logo } from "./Logo";
@@ -21,7 +22,7 @@ export function Header() {
                         letterSpacing="tight" 
                         fontSize={['xl', '2xl']} 
                         fontWeight="bold" 
-                    >Users</Text>
+                    >{t("shared.header.usersLink")}</Text>
                 </Link>
             </Flex>
         </Flex>

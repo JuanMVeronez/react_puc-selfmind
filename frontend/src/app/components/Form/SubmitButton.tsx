@@ -1,4 +1,5 @@
 import { Button, Icon, Spinner, Text } from "@chakra-ui/react";
+import { t } from "i18next";
 import { GiLotus } from "react-icons/gi";
 import { useCases } from "../../hooks/casesContext";
 
@@ -20,7 +21,7 @@ export function SubmitButton({disabled=false}: SubmitButtonProps) {
             {creationLoading
                 ? <Spinner /> 
                 : <>
-                    <Text as="span">Finalizar Cadastro</Text>  
+                    <Text as="span">{t("home.form.submitButton")}</Text>  
                     <Icon as={GiLotus} ml="1" fontSize={24}></Icon>
                 </>
             } 
