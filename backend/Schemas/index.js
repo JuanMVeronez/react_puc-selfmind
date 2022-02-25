@@ -31,18 +31,20 @@ const Mutation = new GraphQLObjectType({
         createAluno: {
             type: AlunoType,
             args: {
-                nome: { type: GraphQLString },
-                idade: { type: GraphQLInt },
+                name: { type: GraphQLString },
+                age: { type: GraphQLInt },
                 email: { type: GraphQLString },
-                telefone: { type: GraphQLString }
+                phone: { type: GraphQLString },
+                text: { type: GraphQLString }
             },
             resolve(parent, args) {
                 casesData.push({
-                    id: alunoData.length + 1,
-                    nome: args.nome,
-                    idade: args.idade,
+                    id: casesData.length + 1,
+                    name: args.name,
+                    age: args.age,
                     email: args.email,
-                    telefone: args.telefone
+                    phone: args.phone,
+                    text: args.text
                 })
                 return args;
             }
