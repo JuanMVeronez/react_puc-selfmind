@@ -16,8 +16,8 @@ export function Cases() {
                 p="4"
             >
                 <SimpleGrid flex="1" gap="6" minChildWidth="320px" alignContent="flex-start" gridColumnStart="1" gridColumnEnd="3">
-                    {cases.map(({name, text, age}) => (
-                        <Box>
+                    {cases.map(({name, text, age, id}) => (
+                        <Box key={id}>
                             <CaseCard  name={name} text={text} age={age} />
                         </Box>
                     ))}

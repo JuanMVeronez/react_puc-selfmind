@@ -3,7 +3,7 @@ const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLInt, GraphQLString } = graphql;
 
 
-const AlunoType = new GraphQLObjectType({
+const CasesType = new GraphQLObjectType({
     name: 'Cases',
     fields: () => ({
         id: { type: GraphQLInt },
@@ -15,4 +15,4 @@ const AlunoType = new GraphQLObjectType({
     })
 })
 
-module.exports = AlunoType;
+module.exports = CasesType;

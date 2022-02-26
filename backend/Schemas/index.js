@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const AlunoType = require('./TypeDefs/AlunoType');
+const CasesType = require('../TypeDefs/cases');
 const {
     GraphQLSchema,
     GraphQLObjectType,
@@ -14,11 +14,10 @@ const casesData = require('../demo_data.json');
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
-        getAllAlunos: {
-            type: new GraphQLList(AlunoType),
+        getAllCases: {
+            type: new GraphQLList(CasesType),
             args: { id: { type: GraphQLInt } },
             resolve(parent, args) {
-                //Acesso a um DB.
                 return casesData;
             }
         }
@@ -28,8 +27,8 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: {
-        createAluno: {
-            type: AlunoType,
+        createCase: {
+            type: CasesType,
             args: {
                 name: { type: GraphQLString },
                 age: { type: GraphQLInt },

@@ -2,7 +2,7 @@ export type UserCase = {
     id?: number;
     name: string;
     email: string;
-    phone?: number;
+    phone?: string;
     age?: number;
     text: string;
 }

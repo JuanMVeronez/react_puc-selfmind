@@ -1,7 +1,8 @@
 import { t } from "i18next";
+
 import { DataTable } from "../components/DataTable";
 import { TitleBelt } from "../components/TitleBelt";
-import {User} from "../types/user"
+import { useCases } from "../hooks/casesContext";
 
 const columns = [
     {value: 'name', title: t("users.table.name")}, 
@@ -11,15 +12,9 @@ const columns = [
 ]
 
 export default function Users() {
-    const users: User[] = [
-        {name: 'Valdemir', age: 22, phone: "123", email: "teste"},
-        {name: 'Valdemir', age: 22, phone: "123", email: "teste"},
-        {name: 'Valdemir', phone: "123", email: "teste"},
-        {name: 'Valdemir', age: 22, phone: "123", email: "teste"},
-        {name: 'Valdemir', age: 22, phone: "123", email: "teste"}
-    ]    
+    const {users} = useCases()
 
-    return (
+    return !!users && (
         <>
             <TitleBelt title={t("users.title")}
                 mt="8"

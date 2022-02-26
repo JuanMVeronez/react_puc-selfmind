@@ -9,6 +9,6 @@ export function formatFormData(formData: CaseFormFormat): UserCase {
         email: labels.email.value,
         text: labels.text.value,
         age: Number(labels.age.value),
-        phone: Number(labels.phone.value),
+        phone: labels.phone.value,
     }
 }

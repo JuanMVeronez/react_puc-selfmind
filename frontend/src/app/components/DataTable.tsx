@@ -13,8 +13,8 @@ export function DataTable({ columns, data }: TableProps) {
         <Table bg="blue.200">
             <Thead>
                 <Tr py="2" >
-                    {columns.map(({title}) => (
-                        <Th border="0"
+                    {columns.map(({title, value}) => (
+                        <Th key={value} border="0"
                             color="pink.600"
                         >{title}</Th>
                     ))}
@@ -22,8 +22,8 @@ export function DataTable({ columns, data }: TableProps) {
             </Thead>
             <Tbody>
                 {data.map(row => (
-                    <Tr>
-                        {columns.map(({value}) => (<Th color="white" >{row[value]}</Th>))}
+                    <Tr key={row.id}>
+                        {columns.map(({value}, i) => (<Th key={i}  color="white" >{row[value]}</Th>))}
                     </Tr>
                 ))}
             </Tbody>
