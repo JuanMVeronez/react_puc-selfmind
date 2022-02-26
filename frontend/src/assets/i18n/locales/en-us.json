@@ -32,7 +32,7 @@
                 },
                 "errors": {
                     "required": "Required field",
-                    "emailType": "Need to be a email",
+                    "emailType": "Need to be an email",
                     "numberType": "Need to be a number",
                     "maxLen": "Max character length:",
                     "minLen": "Min character length:",

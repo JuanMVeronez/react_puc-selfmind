@@ -26,15 +26,14 @@ export const formBaseValue: CaseFormFormat = {
 }
 
 export function FormHandler(base: CaseFormFormat, action: CaseFormAction): CaseFormFormat {
-    
     if (action.type === "reset") {
         return formBaseValue;
     }
-    if (!action.fieldId || !action.value) return base;
 
     if (action.type === "change") {
         return {...base, [action.fieldId]: {...base[action.fieldId], value: action.value}}
     }
+    
     if (action.type === "blur") {
         let res: ValidationResponse | undefined;
         switch (action.fieldId) {
