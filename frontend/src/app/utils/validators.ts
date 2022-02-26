@@ -2,14 +2,14 @@ import { t } from 'i18next';
 import { ValidationResponse, CaseFormFormat, CaseFormAction, FormField } from './../types/caseForm';
 
 const errorMsg = {
-    required: t("home.form.errors.required"),
-    emailType: t("home.form.errors.emailType"),
-    numberType: t("home.form.errors.numberType"),
-    maxLen: t("home.form.errors.maxLen"),
-    minLen: t("home.form.errors.minLen"),
-    equalLen: t("home.form.errors.equalLen"),
-    maxValue: t("home.form.errors.maxValue"),
-    minValue: t("home.form.errors.minValue"),
+    required: () => t("home.form.errors.required"),
+    emailType: () => t("home.form.errors.emailType"),
+    numberType: () => t("home.form.errors.numberType"),
+    maxLen: () => t("home.form.errors.maxLen"),
+    minLen: () => t("home.form.errors.minLen"),
+    equalLen: () => t("home.form.errors.equalLen"),
+    maxValue: () => t("home.form.errors.maxValue"),
+    minValue: () => t("home.form.errors.minValue"),
 
 }
 
@@ -25,8 +25,7 @@ export function mixValidation(...validations: ValidationResponse[]): ValidationR
 
 export function requiredValidation(value: string): ValidationResponse {
     const isValid = !!value;
-    const msg = errorMsg.required // não entendo por que precisa disso, mas precisa
-    return {isValid, error: !isValid? msg : undefined};
+    return {isValid, error: !isValid? errorMsg.required() : undefined};
 }
 
 export function notRequired(value: string): ValidationResponse {
@@ -36,7 +35,7 @@ export function notRequired(value: string): ValidationResponse {
 
 export function emailValidation(value: string): ValidationResponse {
     const isValid = value.search("@") !== -1
-    return {isValid, error: !isValid? errorMsg.emailType : undefined};
+    return {isValid, error: !isValid? errorMsg.emailType() : undefined};
 }
 
 export function lenValidator(value:string, len: number, type: "min" | "max" | "exact"): ValidationResponse {
@@ -44,27 +43,27 @@ export function lenValidator(value:string, len: number, type: "min" | "max" | "e
     let errorRes: string;
     if (type === "max") {
         isValid = value.length <= len;
-        errorRes = `${errorMsg.maxLen} ${len}`; 
+        errorRes = `${errorMsg.maxLen()} ${len}`; 
     } if (type === "min") {
         isValid = value.length >= len;
-        errorRes = `${errorMsg.minLen} ${len}`;
+        errorRes = `${errorMsg.minLen()} ${len}`;
     } else {
         isValid = value.length === len;
-        errorRes = `${errorMsg.equalLen} ${len}`;
+        errorRes = `${errorMsg.equalLen()} ${len}`;
     }
     return {isValid, error: !isValid? errorRes : undefined};
 }
 
 export function numberValueValidation(value: string, comparation: number, type: "min" | "max"): ValidationResponse {
-    if (isNaN(Number(value))) return {isValid: false, error: errorMsg.numberType};
+    if (isNaN(Number(value))) return {isValid: false, error: errorMsg.numberType()};
     let isValid: boolean;
     let errorRes: string;
     if (type === "max") {
         isValid = Number(value) < comparation;
-        errorRes = `${errorMsg.maxValue} ${comparation}`; 
+        errorRes = `${errorMsg.maxValue()} ${comparation}`; 
     } else {
         isValid = Number(value) >= comparation;
-        errorRes = `${errorMsg.minValue} ${comparation}`;
+        errorRes = `${errorMsg.minValue()} ${comparation}`;
     }
     return {isValid, error: !isValid? errorRes : undefined};
 }

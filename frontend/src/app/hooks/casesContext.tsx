@@ -20,6 +20,7 @@ type CasesContextData = {
     newCase: CaseFormFormat,
     setNewCase: React.Dispatch<CaseFormAction>,
     createUserCase: () => Promise<void>,
+    creationLoading: boolean
 }
 
 const CasesContext = createContext<CasesContextData>({} as CasesContextData);
@@ -32,11 +33,12 @@ export function CasesProvider({children}: CasesProviderProps) {
     const { data: casesData } = useQuery(LOAD_CASES);
     const { data: clientsData } = useQuery(LOAD_CLIENTS);
     
-    const { createCase } = useMutation(CREATE_CASE_MUTATION) as any;
+    const [ createCase, { loading: creationLoading }] = useMutation(CREATE_CASE_MUTATION);
+
 
     const createUserCase = async () => {
         const caseData = formatFormData(newCase)
-        await createCase({
+        const {data: { createCase: res }} = await createCase({
             variables: {
                 name: caseData.name,
                 age: caseData.age,
@@ -45,14 +47,14 @@ export function CasesProvider({children}: CasesProviderProps) {
                 text: caseData.text
             }
         })
-        setCases([...cases, caseData])
+        setCases([...cases, res])
         setNewCase({type: "reset"} as any)
     }
     
     useEffect(() => {
         if (!!casesData) setCases(casesData.getAllCases);
         if (!!clientsData) setUsers(clientsData.getAllCases);
-    }, [casesData, clientsData, newCase]);
+    }, [casesData, clientsData]);
 
     return (
         <CasesContext.Provider value={{
@@ -61,6 +63,7 @@ export function CasesProvider({children}: CasesProviderProps) {
             newCase,
             setNewCase,
             createUserCase,
+            creationLoading,
         }}>
             {children}
         </CasesContext.Provider>

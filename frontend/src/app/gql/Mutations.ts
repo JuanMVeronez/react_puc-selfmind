@@ -15,9 +15,10 @@ export const CREATE_CASE_MUTATION = gql`
         email: $email,
         text: $text
         ) {
-            nome,
+            name,
             age,
-            text
+            text,
+            id
         }
     }
 `

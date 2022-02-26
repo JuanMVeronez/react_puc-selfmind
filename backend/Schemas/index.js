@@ -45,7 +45,7 @@ const Mutation = new GraphQLObjectType({
                     phone: args.phone,
                     text: args.text
                 })
-                return args;
+                return {...args, id: casesData.length + 1};
             }
         }
     }
