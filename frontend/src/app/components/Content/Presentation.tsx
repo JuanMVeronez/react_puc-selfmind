@@ -1,4 +1,5 @@
 import { Image, Stack, Text } from "@chakra-ui/react";
+import { t } from "i18next";
 
 export function Presentation() {
     return (
@@ -16,7 +17,7 @@ export function Presentation() {
                     top="-10"
                     textAlign="center"
                 >
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus ab doloremque dolorum natus. Voluptates cumque fugiat, fuga dolorum iure mollitia voluptate a itaque voluptatibus libero debitis nesciunt maxime minima est.
+                    {t("home.presentation")}
                 </Text>
             </Stack>
         </>
