@@ -25,7 +25,8 @@ export function mixValidation(...validations: ValidationResponse[]): ValidationR
 
 export function requiredValidation(value: string): ValidationResponse {
     const isValid = !!value;
-    return {isValid, error: !isValid? errorMsg.required : undefined};
+    const msg = errorMsg.required // não entendo por que precisa disso, mas precisa
+    return {isValid, error: !isValid? msg : undefined};
 }
 
 export function notRequired(value: string): ValidationResponse {
